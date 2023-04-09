@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_ecommerce/screens/keyboard_details_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class KeyboardMainScreen extends StatefulWidget {
@@ -22,10 +23,11 @@ class _KeyboardMainScreenState extends State<KeyboardMainScreen> {
         height: size.height,
         child: Padding(
           padding: EdgeInsets.only(
-              top: MediaQuery.of(context).viewPadding.top + 7,
-              right: 16,
-              left: 16,
-              bottom: 16),
+            top: MediaQuery.of(context).viewPadding.top + 7,
+            right: 16,
+            left: 16,
+            bottom: 16,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
@@ -139,78 +141,90 @@ class _KeyboardMainScreenState extends State<KeyboardMainScreen> {
                         ),
                       ),
 
-                      Container(
-                        height: 210,
-                        width: size.width,
-                        margin: const EdgeInsets.only(top: 20),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          image: const DecorationImage(
-                            image: AssetImage("assets/images/keyboard.jpg"),
-                            fit: BoxFit.cover,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const KeyboardDetailsScreen(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          height: 210,
+                          width: size.width,
+                          margin: const EdgeInsets.only(top: 20),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            image: const DecorationImage(
+                              image: AssetImage("assets/images/keyboard.jpg"),
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        padding: const EdgeInsets.all(15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 2),
-                              child: Text(
-                                "Hot Today",
-                                style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.green,
+                          padding: const EdgeInsets.all(15),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 3,
-                            ),
-                            Text(
-                              "IQUNIX",
-                              style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25,
-                                color: Colors.green[500],
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "ZX75 Gravity Wave",
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 2),
+                                child: Text(
+                                  "Hot Today",
                                   style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14,
-                                    color: Colors.green[500],
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.green,
                                   ),
                                 ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      "Details",
-                                      style: GoogleFonts.poppins(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14,
-                                        color: Colors.green[500],
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.arrow_circle_right_sharp,
+                              ),
+                              const SizedBox(
+                                height: 3,
+                              ),
+                              Text(
+                                "IQUNIX",
+                                style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25,
+                                  color: Colors.green[500],
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "ZX75 Gravity Wave",
+                                    style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
                                       color: Colors.green[500],
                                     ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "Details",
+                                        style: GoogleFonts.poppins(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14,
+                                          color: Colors.green[500],
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.arrow_circle_right_sharp,
+                                        color: Colors.green[500],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
 
@@ -319,14 +333,15 @@ class _KeyboardMainScreenState extends State<KeyboardMainScreen> {
                               color: Colors.white,
                             ),
                           ),
-
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
                               color: Colors.grey,
                             ),
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 8),
+                              horizontal: 8,
+                              vertical: 8,
+                            ),
                             child: Icon(
                               Icons.shopping_bag,
                               color: Colors.orange[200],
